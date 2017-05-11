@@ -14,11 +14,7 @@ class CartItemsController < ApplicationController
     redirect_to carts_path
   end
 
-  private
 
-  def cart_item_params
-    params.require(:cart_item).permit(:quantity)
-  end
 
   def destroy
     @cart = current_cart
@@ -29,4 +25,10 @@ class CartItemsController < ApplicationController
     flash[:warning] = "成功将#{@product.title} 从购物车删除!"
     redirect_to :back
   end
+
+private
+
+def cart_item_params
+  params.require(:cart_item).permit(:quantity)
+end
 end
